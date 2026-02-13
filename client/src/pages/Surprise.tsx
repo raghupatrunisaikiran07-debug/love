@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import * as confetti from "canvas-confetti";
+import confetti from "canvas-confetti";
 import { Link } from "wouter";
 import { Gift, Heart, Sparkles, Star } from "lucide-react";
 
@@ -19,7 +19,7 @@ export default function Surprise() {
 
     (function frame() {
       // Left side confetti
-      (confetti as any)({
+      confetti({
         particleCount: 7,
         angle: 60,
         spread: 55,
@@ -28,7 +28,9 @@ export default function Surprise() {
         shapes: ['circle', 'square'],
         scalar: 1.2,
       });
-      (confetti as any)({
+
+      // Right side confetti
+      confetti({
         particleCount: 7,
         angle: 120,
         spread: 55,
@@ -39,13 +41,14 @@ export default function Surprise() {
       });
 
       // Center burst
-      (confetti as any)({
+      confetti({
         particleCount: 3,
         angle: 90,
         spread: 100,
-        origin: { x: 0.5, y: 0.3 },
+        origin: { x: 0.5, y: 0.5 },
         colors: colors,
-        scalar: 0.75,
+        shapes: ['star'],
+        scalar: 1.5,
       });
 
       if (Date.now() < end) {
@@ -54,8 +57,8 @@ export default function Surprise() {
     })();
   };
 
-  const surpriseText = "You are the best gift I could ever ask for.";
-  const text = "Jaanu! today we celebrate from afar, but the real surprise is coming — a future where we don’t have to count miles, only memories.";
+  const surpriseText = "You are the best gift I could ever ask for. Get ready for a special dinner tonight!";
+  const text = "Or replace this with your actual surprise coupon/message";
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50">
@@ -132,7 +135,7 @@ export default function Surprise() {
         ))}
       </div>
 
-      <div className="w-full max-w-lg relative z-10" style={{ perspective: "1000px" }}>
+      <div className="w-full max-lg relative z-10" style={{ perspective: "1000px" }}>
         <AnimatePresence mode="wait">
           {!isOpen ? (
             <motion.div
