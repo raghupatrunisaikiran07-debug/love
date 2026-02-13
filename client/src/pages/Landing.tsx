@@ -259,7 +259,7 @@ export default function Landing() {
               <div className="absolute inset-0 bg-white p-2 rounded-lg shadow-lg rotate-3" />
               <div className="relative w-full h-full overflow-hidden rounded shadow-inner border-4 border-white">
                 <img
-                  src="/memory1.jpg"
+                  src={`${import.meta.env.BASE_URL}memory1.jpg`}
                   alt="A beautiful memory"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
