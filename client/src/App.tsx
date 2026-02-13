@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation } from "wouter";
+import { Router, Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -62,13 +62,15 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen overflow-hidden selection:bg-pink-200">
-        <FloatingHearts />
-        <Navigation />
-        <AnimatedRoutes />
-       <MusicPlayer/>
-        <Toaster />
-      </div>
+      <Router base="/love">
+        <div className="relative min-h-screen overflow-hidden selection:bg-pink-200">
+          <FloatingHearts />
+          <Navigation />
+          <AnimatedRoutes />
+          <MusicPlayer />
+          <Toaster />
+        </div>
+      </Router>
     </QueryClientProvider>
   );
 }
