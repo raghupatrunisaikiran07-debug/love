@@ -57,7 +57,7 @@ export default function Surprise() {
     })();
   };
 
-  const surpriseText = "You are the best gift I could ever ask for. Get ready for a special dinner tonight!";
+  const surpriseText = "You are the best gift I could ever ask for.";
   const text = "Jaanu! today we celebrate from afar, but the real surprise is coming — a future where we don’t have to count miles, only memories.";
 
   return (
