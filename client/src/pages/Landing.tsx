@@ -7,30 +7,56 @@ import { usePartner } from "@/hooks/use-partner";
 import { useState, useEffect, useCallback, memo } from "react";
 
 // Memoized decorative components
-const FloatingHeart = memo(({ delay, index }: { delay: number; index: number }) => (
+const MESSAGES = [
+  "You are my champion",
+  "Waiting for your success",
+  "I believe in you",
+  "Always by your side",
+  "My constant support",
+  "You've got this!",
+  "Keep shining, jaanu",
+  "My lucky charm",
+  "kanna",
+  "jaanu sravanthi",
+  "sweety",
+  "my cutiepie",
+  "my guardian angel",
+  "click the big heart"
+];
+
+const MessageHeart = memo(({ delay, text, isLast }: { delay: number; text: string, isLast?: boolean }) => (
   <motion.div
-    className="absolute will-change-transform"
+    className="absolute will-change-transform flex flex-col items-center justify-center pointer-events-none"
     initial={{
-      x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 0,
+      x: typeof window !== 'undefined' ? Math.random() * (window.innerWidth - 150) + 75 : 0,
       y: typeof window !== 'undefined' ? window.innerHeight + 100 : 0,
       opacity: 0,
+      scale: 0.8,
     }}
     animate={{
       y: -200,
-      opacity: [0, 0.5, 0.5, 0],
+      opacity: [0, 1, 1, 0],
+      scale: [0.9, 1.2, 1.2, 1],
     }}
     transition={{
-      duration: 10 + Math.random() * 5,
+      duration: isLast ? 14 : 12 + Math.random() * 6,
       repeat: Infinity,
       delay,
       ease: "linear",
     }}
   >
-    <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-pink-400/40 fill-pink-300/40" />
+    <div className="relative flex items-center justify-center">
+      <Heart className="w-20 h-20 sm:w-24 sm:h-24 text-pink-400/30 fill-pink-300/10" />
+      <div className="absolute inset-0 flex items-center justify-center p-4">
+        <span className="text-[10px] sm:text-xs font-handwriting text-rose-500/90 text-center leading-tight">
+          {text}
+        </span>
+      </div>
+    </div>
   </motion.div>
 ));
 
-FloatingHeart.displayName = "FloatingHeart";
+MessageHeart.displayName = "MessageHeart";
 
 const Sparkle = memo(({ delay, left, top }: { delay: number; left: string; top: string }) => (
   <motion.div
@@ -96,16 +122,16 @@ export default function Landing() {
   }, [isNavigating, toggle, setLocation]);
 
   return (
-    <div 
+    <div
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 px-4"
       onMouseMove={handleMouseMove}
     >
       {/* Simplified background - single gradient layer */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-200/20 via-transparent to-transparent" />
-      
+
       {/* Optimized glowing aura - reduced to 1 layer with lower blur */}
       <motion.div
-        animate={{ 
+        animate={{
           scale: [1, 1.15, 1],
           opacity: [0.15, 0.25, 0.15],
         }}
@@ -115,16 +141,21 @@ export default function Landing() {
 
       {/* Reduced floating hearts - only 5 instead of 8 */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(5)].map((_, i) => (
-          <FloatingHeart key={`heart-${i}`} delay={i * 1.5} index={i} />
+        {MESSAGES.map((text, i) => (
+          <MessageHeart
+            key={`msg-heart-${i}`}
+            delay={i * 3}
+            text={text}
+            isLast={i === MESSAGES.length - 1}
+          />
         ))}
       </div>
 
       {/* Reduced sparkles - only 10 instead of 20 */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(10)].map((_, i) => (
-          <Sparkle 
-            key={`sparkle-${i}`} 
+          <Sparkle
+            key={`sparkle-${i}`}
             delay={i * 0.3}
             left={`${Math.random() * 100}%`}
             top={`${Math.random() * 100}%`}
@@ -133,7 +164,7 @@ export default function Landing() {
       </div>
 
       {/* Main content container with optimized 3D transforms */}
-      <motion.div 
+      <motion.div
         className="z-10 flex flex-col items-center text-center space-y-8 sm:space-y-12 md:space-y-14 max-w-2xl will-change-transform"
         style={{
           rotateX,
@@ -174,16 +205,16 @@ export default function Landing() {
           transition={{ duration: 1, delay: 0.4 }}
           className="space-y-4 sm:space-y-6"
         >
-          <motion.span 
+          <motion.span
             className="font-handwriting text-lg sm:text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 block leading-relaxed px-4"
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
-            I've been carrying this in my heart for so long…
+            I've been carrying this in my heart for so long… jaanu!
           </motion.span>
 
           <motion.div
-            animate={{ 
+            animate={{
               textShadow: [
                 "0 0 15px rgba(244, 114, 182, 0.1)",
                 "0 0 20px rgba(244, 114, 182, 0.15)",
@@ -210,13 +241,37 @@ export default function Landing() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="space-y-2"
+            className="space-y-4"
           >
             <p className="text-sm sm:text-base md:text-lg text-rose-700/80 font-light italic leading-relaxed px-4">
-              Every moment since you walked into my life,
+              Sravanthi, Every moment since you walked into my life,
               <br />
               <span className="text-pink-600/90">the universe feels a little more magical.</span>
             </p>
+
+            {/* Memory Preview */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
+              animate={{ opacity: 1, scale: 1, rotate: -1 }}
+              transition={{ delay: 1.8, duration: 1 }}
+              className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto group"
+            >
+              <div className="absolute inset-0 bg-white p-2 rounded-lg shadow-lg rotate-3" />
+              <div className="relative w-full h-full overflow-hidden rounded shadow-inner border-4 border-white">
+                <img
+                  src="/memory1.jpg"
+                  alt="A beautiful memory"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute -top-2 -right-2 bg-pink-500 rounded-full p-1 shadow-md"
+              >
+                <Heart className="w-3 h-3 text-white fill-white" />
+              </motion.div>
+            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -241,7 +296,7 @@ export default function Landing() {
             {isHovering && (
               <motion.div
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-400/30 to-rose-400/30 will-change-transform"
-                animate={{ 
+                animate={{
                   scale: [1, 1.4, 1],
                   opacity: [0.5, 0, 0.5]
                 }}
@@ -252,7 +307,7 @@ export default function Landing() {
             {/* Main button - larger touch target for mobile */}
             <div className="relative z-10 bg-gradient-to-br from-white via-pink-50 to-white p-8 sm:p-10 rounded-full shadow-xl shadow-pink-300/40 border-3 sm:border-4 border-pink-200 group-hover:border-rose-300 transition-all duration-500">
               <motion.div
-                animate={{ 
+                animate={{
                   scale: isHovering ? [1, 1.12, 1] : [1, 1.04, 1]
                 }}
                 transition={{
@@ -262,15 +317,20 @@ export default function Landing() {
                 }}
                 className="will-change-transform"
               >
-                <Heart
-                  className="w-16 h-16 sm:w-20 sm:h-20 text-rose-500 fill-pink-200 group-hover:fill-rose-400 transition-all duration-500"
-                  strokeWidth={1.8}
-                />
+                <div className="relative flex items-center justify-center">
+                  <Heart
+                    className="w-16 h-16 sm:w-20 sm:h-20 text-rose-500 fill-pink-200 group-hover:fill-rose-400 transition-all duration-500"
+                    strokeWidth={1.8}
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center text-[10px] sm:text-xs font-handwriting text-rose-600 font-bold pointer-events-none mt-1">
+                    Click Me
+                  </span>
+                </div>
               </motion.div>
             </div>
 
             {/* Single pulse ring for performance */}
-            <motion.span 
+            <motion.span
               className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-400/20 to-rose-400/20 will-change-transform"
               animate={{ scale: [1, 1.4], opacity: [0.4, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
@@ -304,7 +364,7 @@ export default function Landing() {
           >
             Click the heart when you're ready…
           </motion.p>
-          
+
           <p className="text-pink-500/60 text-xs sm:text-sm italic">
             (Some feelings are too precious to rush)
           </p>

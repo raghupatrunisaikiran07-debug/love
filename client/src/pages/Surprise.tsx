@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import confetti from "canvas-confetti";
+import * as confetti from "canvas-confetti";
 import { Link } from "wouter";
 import { Gift, Heart, Sparkles, Star } from "lucide-react";
 
@@ -11,7 +11,7 @@ export default function Surprise() {
   const handleOpen = () => {
     if (isOpen) return;
     setIsOpen(true);
-    
+
     // Enhanced confetti celebration
     const duration = 4000;
     const end = Date.now() + duration;
@@ -19,7 +19,7 @@ export default function Surprise() {
 
     (function frame() {
       // Left side confetti
-      confetti({
+      (confetti as any)({
         particleCount: 7,
         angle: 60,
         spread: 55,
@@ -28,9 +28,7 @@ export default function Surprise() {
         shapes: ['circle', 'square'],
         scalar: 1.2,
       });
-      
-      // Right side confetti
-      confetti({
+      (confetti as any)({
         particleCount: 7,
         angle: 120,
         spread: 55,
@@ -39,16 +37,15 @@ export default function Surprise() {
         shapes: ['circle', 'square'],
         scalar: 1.2,
       });
-      
+
       // Center burst
-      confetti({
+      (confetti as any)({
         particleCount: 3,
         angle: 90,
         spread: 100,
-        origin: { x: 0.5, y: 0.5 },
+        origin: { x: 0.5, y: 0.3 },
         colors: colors,
-        shapes: ['star'],
-        scalar: 1.5,
+        scalar: 0.75,
       });
 
       if (Date.now() < end) {
@@ -57,8 +54,8 @@ export default function Surprise() {
     })();
   };
 
-  const surpriseText = "You are the best gift I could ever ask for. Get ready for a special dinner tonight!";
-  const text = "Or replace this with your actual surprise coupon/message";
+  const surpriseText = "You are the best gift I could ever ask for.";
+  const text = "Jaanu! today we celebrate from afar, but the real surprise is coming — a future where we don’t have to count miles, only memories.";
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50">
@@ -195,7 +192,7 @@ export default function Surprise() {
 
                   {/* Envelope Body */}
                   <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-rose-100" />
-                  
+
                   {/* Bottom decorative triangle */}
                   <div
                     className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-pink-200/50 to-transparent"
@@ -222,7 +219,7 @@ export default function Surprise() {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="absolute inset-2 bg-white/20 rounded-full"
                       />
-                      
+
                       <Heart className="w-8 h-8 md:w-10 md:h-10 text-white fill-white relative z-10" />
 
                       {/* Sparkles around seal */}
@@ -348,7 +345,7 @@ export default function Surprise() {
                   className="p-6 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full shadow-lg relative"
                 >
                   <Gift className="w-14 h-14 md:w-16 md:h-16 text-rose-500" />
-                  
+
                   {/* Sparkles around gift */}
                   {[...Array(4)].map((_, i) => (
                     <motion.div

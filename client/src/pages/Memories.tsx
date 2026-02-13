@@ -74,64 +74,32 @@ export default function Memories() {
 
   // Placeholder data if empty
   const displayMemories = (memories && memories.length > 0) ? memories : [
-    {
-      id: 1,
-      url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
-      type: "image",
-      caption: "The way you smile",
-      date: "Always",
-      rotation: -2
-    },
-    {
-      id: 2,
-      url: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
-      type: "image",
-      caption: "Beautiful moments",
-      date: "Spring 2023",
-      rotation: 3
-    },
-    {
-      id: 3,
-      url: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&q=80",
-      type: "image",
-      caption: "Never letting go",
-      date: "Forever",
-      rotation: -4
-    },
-    {
-      id: 4,
-      url: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80",
-      type: "image",
-      caption: "Chasing sunsets",
-      date: "Summer Vacation",
-      rotation: 2
-    },
-    {
-      id: 5,
-      url: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&q=80",
-      type: "image",
-      caption: "Surprises",
-      date: "Your Birthday",
-      rotation: 5
-    },
-    {
-      id: 6,
-      url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
-      type: "image",
-      caption: "Coffee dates",
-      date: "Every Weekend",
-      rotation: -3
-    }
+    { id: 1, url: "/memory1.jpg", type: "image", caption: "The beginning of us", date: "First Day", rotation: -2 },
+    { id: 2, url: "/memory2.jpg", type: "image", caption: "Sweetest laughs", date: "Month 1", rotation: 3 },
+    { id: 3, url: "/memory3.jpg", type: "image", caption: "In your arms", date: "Forever", rotation: -4 },
+    { id: 4, url: "/memory4.jpg", type: "image", caption: "The way you smile", date: "Always", rotation: 2 },
+    { id: 5, url: "/memory5.jpg", type: "image", caption: "Beautiful moments", date: "Spring 2023", rotation: 5 },
+    { id: 6, url: "/memory6.jpg", type: "image", caption: "Never letting go", date: "Summer 2023", rotation: -3 },
+    { id: 7, url: "/memory7.jpg", type: "image", caption: "Chasing sunsets", date: "Our Trip", rotation: 4 },
+    { id: 8, url: "/memory8.jpg", type: "image", caption: "Surprises", date: "Birthday", rotation: -2 },
+    { id: 9, url: "/memory9.jpg", type: "image", caption: "Coffee dates", date: "Every Weekend", rotation: 3 },
+    { id: 10, url: "/memory10.jpg", type: "image", caption: "Midnight talks", date: "Autumn", rotation: -5 },
+    { id: 11, url: "/memory11.jpg", type: "image", caption: "Warmest hugs", date: "Winter", rotation: 1 },
+    { id: 12, url: "/memory12.jpg", type: "image", caption: "Your gentle soul", date: "Always", rotation: -4 },
+    { id: 13, url: "/memory13.jpg", type: "image", caption: "Holding hands", date: "Forever", rotation: 2 },
+    { id: 14, url: "/memory14.jpg", type: "image", caption: "Pure joy", date: "Memorable Day", rotation: -3 },
+    { id: 15, url: "/memory15.jpg", type: "image", caption: "Safe with you", date: "Everyday", rotation: 4 },
+    { id: 16, url: "/memory16.jpg", type: "image", caption: "My everything", date: "Today & Always", rotation: -1 }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 relative overflow-hidden">
       {/* Simplified background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-200/20 via-transparent to-transparent pointer-events-none" />
-      
+
       {/* Single optimized glow */}
       <motion.div
-        animate={{ 
+        animate={{
           scale: [1, 1.1, 1],
           opacity: [0.1, 0.18, 0.1],
         }}
@@ -251,8 +219,8 @@ export default function Memories() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "100px", amount: 0.1 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: index * 0.1,
                 ease: "easeOut"
               }}

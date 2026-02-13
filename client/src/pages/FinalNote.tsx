@@ -67,22 +67,22 @@ export default function FinalNote() {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
-  const fullText = "Loving you is not something I do—it's who I am. In every breath, every silence, every tomorrow, it's you. Happy Valentine's Day to the one my heart chose long before I ever understood love.";
+  const fullText = "My love comes from a deep heart that still hopes, still waits. I miss the respect we shared and dream of a day when everything becomes normal again. We went through lot of tough time and came back but one thing i can promise i will be there for you till my last breathe. Thanks for believing me again and trusting me again. I am definitely saying i will not bow you down in your life, be the way you are, and give me respect only when you think that it is time. Happy Valentine's Day nana—this is just one of many celebrations I wish we’ll share together.";
 
   // Optimized typing effect
   useEffect(() => {
     if (isLoading) return;
-    
+
     let index = 0;
     const typingSpeed = 35; // Slightly faster for better UX
-    
+
     const timer = setInterval(() => {
       if (index >= fullText.length) {
         clearInterval(timer);
         setIsTypingComplete(true);
         return;
       }
-      
+
       setDisplayedText(fullText.slice(0, index + 1));
       index++;
     }, typingSpeed);
@@ -250,23 +250,208 @@ export default function FinalNote() {
           </div>
         </motion.div>
 
+        {/* Memory Lane Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: isTypingComplete ? 1 : 0, y: isTypingComplete ? 0 : 40 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="mt-12 sm:mt-16 md:mt-20 space-y-8 sm:space-y-12"
+        >
+          <div className="text-center space-y-4">
+            <h2 className="font-handwriting text-3xl sm:text-4xl md:text-5xl text-rose-600">
+              Our Memory Lane
+            </h2>
+            <div className="flex items-center justify-center gap-3">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-rose-300" />
+              <Heart className="w-5 h-5 text-rose-400 fill-rose-300/30" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-rose-300" />
+            </div>
+          </div>
+
+          {/* Memory Wall Section (Redesigned for High Density) */}
+          <div className="relative py-10 px-2 sm:px-4 bg-white/40 backdrop-blur-md rounded-[3rem] border-2 border-rose-100/50 shadow-2xl overflow-hidden">
+            {/* Background Texture/Pattern */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='%23e11d48' fill-opacity='1'/%3E%3C/svg%3E")` }} />
+
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 auto-rows-max">
+              {[...Array(16)].map((_, i) => {
+                const rotation = (i * 13) % 10 - 5; // pseudo-random rotation
+                const isGrayscale = i % 3 === 0; // Filter every 3rd image
+                const delay = (i * 0.1) % 1;
+
+                return (
+                  <motion.div
+                    key={`wall-${i}`}
+                    initial={{ opacity: 0, scale: 0.8, rotate: rotation * 2 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: rotation }}
+                    viewport={{ once: true, margin: "50px" }}
+                    whileHover={{
+                      scale: 1.1,
+                      rotate: 0,
+                      zIndex: 50,
+                      transition: { duration: 0.2 }
+                    }}
+                    transition={{ delay, duration: 0.6 }}
+                    className="relative aspect-square"
+                  >
+                    {/* Tape/Pin effect */}
+                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-3 bg-white/40 backdrop-blur-sm border border-white/20 rotate-3 z-20 hidden sm:block shadow-sm" />
+
+                    <div className="w-full h-full bg-white p-1.5 sm:p-2 rounded-lg shadow-xl border border-rose-50 overflow-hidden transform-gpu">
+                      <img
+                        src={`/memory${i + 1}.jpg`}
+                        alt={`Memory ${i + 1}`}
+                        className={`w-full h-full object-cover rounded-md transition-all duration-700 ${isGrayscale ? 'grayscale hover:grayscale-0' : 'hover:scale-105'}`}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Floating decorative labels in between */}
+            <div className="absolute inset-0 pointer-events-none">
+              <motion.div
+                animate={{ rotate: [0, 5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute top-[20%] left-[10%] bg-pink-500/80 text-white px-3 py-1 rounded-full text-[10px] sm:text-xs font-handwriting shadow-lg -rotate-12"
+              >
+                Best Moments
+              </motion.div>
+              <motion.div
+                animate={{ rotate: [0, -5, 0] }}
+                transition={{ duration: 5, repeat: Infinity }}
+                className="absolute bottom-[25%] right-[15%] bg-rose-500/80 text-white px-3 py-1 rounded-full text-[10px] sm:text-xs font-handwriting shadow-lg rotate-12"
+              >
+                Forever Us
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Animated Collage / Slideshow Section (The Dynamic Layer) */}
+          <div className="relative space-y-8">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-rose-50/50 to-transparent blur-3xl" />
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full bg-gradient-to-br from-rose-100/30 to-pink-100/30 rounded-3xl overflow-hidden border-2 border-rose-200/40 shadow-2xl"
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                {[...Array(16)].map((_, i) => (
+                  <motion.div
+                    key={`photo-stream-v2-${i}`}
+                    className="absolute w-40 h-40 sm:w-56 sm:h-56"
+                    initial={{
+                      opacity: 0,
+                      scale: 0.5,
+                      x: (Math.random() - 0.5) * 250 + "%",
+                      y: (Math.random() - 0.5) * 250 + "%",
+                      rotate: (Math.random() - 0.5) * 60
+                    }}
+                    animate={{
+                      opacity: [0, 1, 1, 0],
+                      scale: [0.5, 1.1, 1, 0.9],
+                      x: (Math.random() - 0.5) * 200 + "%",
+                      y: (Math.random() - 0.5) * 200 + "%",
+                      rotate: (Math.random() - 0.5) * 40
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      delay: i * 2,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <div className="bg-white p-2 rounded-lg shadow-2xl border-4 border-white rotate-3 group overflow-hidden">
+                      <img
+                        src={`/memory${i + 1}.jpg`}
+                        className={`w-full h-full object-cover rounded shadow-inner transition-all duration-1000 ${i % 2 === 0 ? 'grayscale group-hover:grayscale-0' : ''}`}
+                        alt=""
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+
+                <div className="relative z-10 text-center px-6 pointer-events-none">
+                  <motion.h3
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="font-handwriting text-4xl sm:text-5xl md:text-6xl text-rose-600 drop-shadow-xl"
+                  >
+                    Our Everlasting Loop
+                  </motion.h3>
+                  <p className="font-serif text-sm sm:text-base text-rose-500/80 mt-2 italic bg-white/40 backdrop-blur-sm px-4 py-1 rounded-full inline-block">
+                    Every frame, a story. Every moment, forever.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Video Section (Enhanced with frame) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative w-full aspect-video bg-white p-3 sm:p-5 rounded-3xl shadow-[0_20px_50px_rgba(225,29,72,0.15)] border-4 border-rose-50 overflow-hidden group"
+            >
+              <video
+                src="/memory_video.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover rounded-2xl shadow-inner grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-rose-900/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute bottom-6 sm:bottom-12 left-0 right-0 text-white text-center">
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="space-y-3"
+                >
+                  <p className="font-handwriting text-3xl sm:text-4xl md:text-5xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                    The melody of us…
+                  </p>
+                  <div className="flex justify-center gap-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Sparkles key={i} className={`w-5 h-5 text-amber-300 opacity-${(i + 1) * 20} filter drop-shadow-lg`} />
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
         {/* Final floating message */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isTypingComplete ? 1 : 0, y: isTypingComplete ? 0 : 20 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="text-center mt-6 sm:mt-8 space-y-2 sm:space-y-3"
+          className="text-center mt-6 sm:mt-16 space-y-4 sm:space-y-6 pb-24"
         >
-          <motion.p
-            animate={{ opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 2.5, repeat: Infinity }}
-            className="font-handwriting text-base sm:text-lg md:text-xl text-pink-600"
-          >
-            Happy Valentine's Day ♡
-          </motion.p>
-          
-          <p className="text-xs sm:text-sm text-gray-500 italic">
-            Made with love, just for you
+          <div className="flex items-center justify-center gap-4">
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
+              <Heart className="w-6 h-6 text-rose-500 fill-rose-500" />
+            </motion.div>
+            <motion.p
+              animate={{
+                scale: [1, 1.1, 1],
+                color: ["#db2777", "#e11d48", "#db2777"]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="font-handwriting text-3xl sm:text-4xl md:text-5xl"
+            >
+              Happy Valentine's Day ♡
+            </motion.p>
+            <motion.div animate={{ rotate: -360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
+              <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+            </motion.div>
+          </div>
+
+          <p className="text-base sm:text-lg text-gray-500 italic max-w-md mx-auto px-4">
+            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
           </p>
         </motion.div>
       </div>
