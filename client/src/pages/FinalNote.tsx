@@ -299,7 +299,7 @@ export default function FinalNote() {
 
                     <div className="w-full h-full bg-white p-1.5 sm:p-2 rounded-lg shadow-xl border border-rose-50 overflow-hidden transform-gpu">
                       <img
-                        src={`/memory${i + 1}.jpg`}
+                        src={`${import.meta.env.BASE_URL}memory${i + 1}.jpg`}
                         alt={`Memory ${i + 1}`}
                         className={`w-full h-full object-cover rounded-md transition-all duration-700 ${isGrayscale ? 'grayscale hover:grayscale-0' : 'hover:scale-105'}`}
                       />
@@ -365,7 +365,7 @@ export default function FinalNote() {
                   >
                     <div className="bg-white p-2 rounded-lg shadow-2xl border-4 border-white rotate-3 group overflow-hidden">
                       <img
-                        src={`/memory${i + 1}.jpg`}
+                        src={`${import.meta.env.BASE_URL}memory${i + 1}.jpg`}
                         className={`w-full h-full object-cover rounded shadow-inner transition-all duration-1000 ${i % 2 === 0 ? 'grayscale group-hover:grayscale-0' : ''}`}
                         alt=""
                       />
@@ -396,7 +396,7 @@ export default function FinalNote() {
               className="relative w-full aspect-video bg-white p-3 sm:p-5 rounded-3xl shadow-[0_20px_50px_rgba(225,29,72,0.15)] border-4 border-rose-50 overflow-hidden group"
             >
               <video
-                src="/memory_video.webm"
+                src={`${import.meta.env.BASE_URL}memory_video.webm`}
                 autoPlay
                 loop
                 muted
