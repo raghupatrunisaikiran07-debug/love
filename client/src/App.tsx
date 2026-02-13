@@ -59,10 +59,18 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  // Automatically detect if we are in a subfolder like /love/
+  const base = window.location.pathname.startsWith("/love") ? "/love" : "";
+
+  useEffect(() => {
+    console.log("App loaded at:", window.location.pathname);
+    console.log("Router base set to:", base);
+    console.log("Vite Base URL:", import.meta.env.BASE_URL);
+  }, [base]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Router base="/love">
+      <Router base={base}>
         <div className="relative min-h-screen overflow-hidden selection:bg-pink-200">
           <FloatingHearts />
           <Navigation />

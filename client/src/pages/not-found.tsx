@@ -11,9 +11,9 @@ export default function NotFound() {
           Looks like we got lost on the way to love.
         </p>
         <Link href="/">
-          <a className="inline-block px-6 py-3 bg-accent text-white rounded-full font-medium hover:bg-accent/90 transition-colors">
+          <span className="cursor-pointer inline-block px-6 py-3 bg-accent text-white rounded-full font-medium hover:bg-accent/90 transition-colors">
             Return Home
-          </a>
+          </span>
         </Link>
       </div>
     </div>

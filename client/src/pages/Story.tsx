@@ -221,21 +221,21 @@ export default function Story() {
       id: 1,
       title: "The First Glance",
       content: "From the moment our eyes met, I knew there was something extraordinary about you. Time seemed to stand still, and in that instant, everything changed.",
-      imageUrl: `${import.meta.env.BASE_URL}memory1.jpg`,
+      imageUrl: "memory1.jpg",
       order: 1
     },
     {
       id: 2,
       title: "Growing Closer",
       content: "Every conversation, every shared laugh, every quiet moment together brought us closer. I found myself looking forward to seeing you, thinking about you constantly.",
-      imageUrl: `${import.meta.env.BASE_URL}memory2.jpg`,
+      imageUrl: "memory2.jpg",
       order: 2
     },
     {
       id: 3,
       title: "Falling Deeper",
       content: "Somewhere along the way, friendship blossomed into something more. My heart would race at the sound of your voice, and your smile became my favorite sight.",
-      imageUrl: `${import.meta.env.BASE_URL}memory3.jpg`,
+      imageUrl: "memory3.jpg",
       order: 3
     },
   ];

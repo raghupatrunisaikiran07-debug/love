@@ -14,7 +14,7 @@ interface AudioContextType {
 
 const AudioContext = createContext<AudioContextType | null>(null);
 
-const DEFAULT_AUDIO_SRC = `${import.meta.env.BASE_URL}memory_video.webm`;
+const DEFAULT_AUDIO_SRC = "memory_video.webm";
 
 export function AudioProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);

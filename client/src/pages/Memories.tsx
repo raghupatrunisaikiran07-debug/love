@@ -74,22 +74,22 @@ export default function Memories() {
 
   // Placeholder data if empty
   const displayMemories = (memories && memories.length > 0) ? memories : [
-    { id: 1, url: `${import.meta.env.BASE_URL}memory1.jpg`, type: "image", caption: "The beginning of us", date: "First Day", rotation: -2 },
-    { id: 2, url: `${import.meta.env.BASE_URL}memory2.jpg`, type: "image", caption: "Sweetest laughs", date: "Month 1", rotation: 3 },
-    { id: 3, url: `${import.meta.env.BASE_URL}memory3.jpg`, type: "image", caption: "In your arms", date: "Forever", rotation: -4 },
-    { id: 4, url: `${import.meta.env.BASE_URL}memory4.jpg`, type: "image", caption: "The way you smile", date: "Always", rotation: 2 },
-    { id: 5, url: `${import.meta.env.BASE_URL}memory5.jpg`, type: "image", caption: "Beautiful moments", date: "Spring 2023", rotation: 5 },
-    { id: 6, url: `${import.meta.env.BASE_URL}memory6.jpg`, type: "image", caption: "Never letting go", date: "Summer 2023", rotation: -3 },
-    { id: 7, url: `${import.meta.env.BASE_URL}memory7.jpg`, type: "image", caption: "Chasing sunsets", date: "Our Trip", rotation: 4 },
-    { id: 8, url: `${import.meta.env.BASE_URL}memory8.jpg`, type: "image", caption: "Surprises", date: "Birthday", rotation: -2 },
-    { id: 9, url: `${import.meta.env.BASE_URL}memory9.jpg`, type: "image", caption: "Coffee dates", date: "Every Weekend", rotation: 3 },
-    { id: 10, url: `${import.meta.env.BASE_URL}memory10.jpg`, type: "image", caption: "Midnight talks", date: "Autumn", rotation: -5 },
-    { id: 11, url: `${import.meta.env.BASE_URL}memory11.jpg`, type: "image", caption: "Warmest hugs", date: "Winter", rotation: 1 },
-    { id: 12, url: `${import.meta.env.BASE_URL}memory12.jpg`, type: "image", caption: "Your gentle soul", date: "Always", rotation: -4 },
-    { id: 13, url: `${import.meta.env.BASE_URL}memory13.jpg`, type: "image", caption: "Holding hands", date: "Forever", rotation: 2 },
-    { id: 14, url: `${import.meta.env.BASE_URL}memory14.jpg`, type: "image", caption: "Pure joy", date: "Memorable Day", rotation: -3 },
-    { id: 15, url: `${import.meta.env.BASE_URL}memory15.jpg`, type: "image", caption: "Safe with you", date: "Everyday", rotation: 4 },
-    { id: 16, url: `${import.meta.env.BASE_URL}memory16.jpg`, type: "image", caption: "My everything", date: "Today & Always", rotation: -1 }
+    { id: 1, url: "memory1.jpg", type: "image", caption: "The beginning of us", date: "First Day", rotation: -2 },
+    { id: 2, url: "memory2.jpg", type: "image", caption: "Sweetest laughs", date: "Month 1", rotation: 3 },
+    { id: 3, url: "memory3.jpg", type: "image", caption: "In your arms", date: "Forever", rotation: -4 },
+    { id: 4, url: "memory4.jpg", type: "image", caption: "The way you smile", date: "Always", rotation: 2 },
+    { id: 5, url: "memory5.jpg", type: "image", caption: "Beautiful moments", date: "Spring 2023", rotation: 5 },
+    { id: 6, url: "memory6.jpg", type: "image", caption: "Never letting go", date: "Summer 2023", rotation: -3 },
+    { id: 7, url: "memory7.jpg", type: "image", caption: "Chasing sunsets", date: "Our Trip", rotation: 4 },
+    { id: 8, url: "memory8.jpg", type: "image", caption: "Surprises", date: "Birthday", rotation: -2 },
+    { id: 9, url: "memory9.jpg", type: "image", caption: "Coffee dates", date: "Every Weekend", rotation: 3 },
+    { id: 10, url: "memory10.jpg", type: "image", caption: "Midnight talks", date: "Autumn", rotation: -5 },
+    { id: 11, url: "memory11.jpg", type: "image", caption: "Warmest hugs", date: "Winter", rotation: 1 },
+    { id: 12, url: "memory12.jpg", type: "image", caption: "Your gentle soul", date: "Always", rotation: -4 },
+    { id: 13, url: "memory13.jpg", type: "image", caption: "Holding hands", date: "Forever", rotation: 2 },
+    { id: 14, url: "memory14.jpg", type: "image", caption: "Pure joy", date: "Memorable Day", rotation: -3 },
+    { id: 15, url: "memory15.jpg", type: "image", caption: "Safe with you", date: "Everyday", rotation: 4 },
+    { id: 16, url: "memory16.jpg", type: "image", caption: "My everything", date: "Today & Always", rotation: -1 }
   ];
 
   return (
